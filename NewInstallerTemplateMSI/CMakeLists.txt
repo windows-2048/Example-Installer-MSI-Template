@@ -1,0 +1,57 @@
+cmake_minimum_required(VERSION 3.15.0)
+
+#set(CMAKE_GENERATOR_PLATFORM Win32)
+
+project(NewInstallerTemplateMSI)
+
+# Enable Unicode Character Set
+add_compile_definitions(UNICODE _UNICODE MYMAGIC=157593)
+
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
+# Force only Release and Debug configurations
+set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "" FORCE)
+
+# Add global compiler definitions for Debug and Release configurations
+add_compile_definitions(
+    $<$<CONFIG:Debug>:_DEBUG>
+    $<$<CONFIG:Release>:NDEBUG>
+)
+
+# Set static runtime before any targets are defined
+set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+
+
+
+add_library(UnRAR0 SHARED
+    msi_log.c
+    dll.rc
+)
+target_link_libraries(UnRAR0
+    PRIVATE
+    msi
+)
+target_link_options(UnRAR0 PRIVATE
+    "/SUBSYSTEM:WINDOWS"
+    "/MANIFEST:NO"
+)
+
+
+
+# Set up the MSI Package project
+set(MSI_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/Installer")
+
+# Configure the heatwave.wxs.in file
+#configure_file(heatwave.wxs.in heatwave.wxs @ONLY)
+
+# Add a custom target to build the MSI
+add_custom_target(Installer_{{ CNM }} ALL
+    COMMAND ${CMAKE_COMMAND} -E make_directory "${MSI_OUTPUT_DIR}"
+    COMMAND "C:/Program Files/WiX Toolset v5.0/bin/wix.exe" build "${CMAKE_SOURCE_DIR}/heatwave.wxs" -out "${MSI_OUTPUT_DIR}/Installer_{{ CNM }}.msi" -ext WixToolset.UI.wixext -ext WixToolset.Util.wixext
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+)
+# Make Installer depending on UnRAR0
+add_dependencies(Installer_{{ CNM }} UnRAR0)
+# Ensure the output of candle.exe and light.exe is visible in the MSVC build log
+set_property(TARGET Installer_{{ CNM }} PROPERTY ENABLE_EXPORTS TRUE)

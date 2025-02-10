@@ -1,0 +1,109 @@
+﻿<Wix xmlns="http://wixtoolset.org/schemas/v4/wxs" xmlns:ui="http://wixtoolset.org/schemas/v4/wxs/ui" xmlns:util="http://wixtoolset.org/schemas/v4/wxs/util">
+  <!-- Define the product -->
+  <Package Name="{{ TITLE }}" Language="1033" Version="{{ VERMSI }}" Manufacturer="{{ MANUFACTURER }}" UpgradeCode="{{ UPGRADECODE }}" Scope="perUser"><!-- Package details -->
+
+  <MajorUpgrade AllowDowngrades="yes" Schedule="afterInstallFinalize" />
+
+        <!-- Define the media (required for the installer) -->
+        <Media Id="1" Cabinet="media1.cab" EmbedCab="yes" />
+
+    <Icon Id="AppIcon1" SourceFile="{{ MAIN_SOURCE_FILE }}" />
+
+    <!-- Include the license agreement -->
+    <WixVariable Id="WixUILicenseRtf" Value="{{ LICENSE }}" />
+
+      <!-- UI customization -->
+      <WixVariable Id="WixUIBannerBmp" Value="{{ IMG_TOP }}" />
+      <WixVariable Id="WixUIDialogBmp" Value="{{ IMG_DIALOG }}" />
+
+      <!-- Set properties for add/remove programs -->
+      <Property Id="ARPPRODUCTICON" Value="AppIcon1" />
+      <Property Id="ARPHELPLINK" Value="{{ HELPLINK }}" />
+
+    <!-- Populate APPLICATIONFOLDER from the registry if the key exists -->
+    <Property Id="PREVAPPLICATIONFOLDER">
+      <RegistrySearch Id="FindInstallFolder" Root="HKCU" Key="Software\{{ CNAME }}" Name="InstallPath" Type="directory" />
+    </Property>
+
+    <SetDirectory
+        Id="APPLICATIONFOLDER"
+        Value="[PREVAPPLICATIONFOLDER]"
+        Sequence="ui"
+        Condition="PREVAPPLICATIONFOLDER" />
+
+    <!-- Define WIXUI_INSTALLDIR based on PREVAPPLICATIONFOLDER or APPLICATIONFOLDER -->
+    <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONFOLDER" />
+
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch My Application Name" />
+
+    <Property Id="WixShellExecTarget" Value="[#MyAppExe]" />
+    <CustomAction Id="LaunchApplication" DllEntry="WixShellExec" Impersonate="yes" BinaryRef="Wix4UtilCA_X86" />
+
+    <UI>
+      <ui:WixUI Id="WixUI_InstallDir" />
+      <Publish Dialog="ExitDialog" Control="Finish" Event="DoAction" Value="LaunchApplication" Condition="WIXUI_EXITDIALOGOPTIONALCHECKBOX = 1 and NOT Installed" />
+    </UI>
+
+    <!-- Define the feature tree -->
+    <Feature Id="MainApplication" Title="{{ TITLE }}" Level="1">
+      <ComponentRef Id="MyAppExecutable" />
+      <ComponentRef Id="MyAppRegistry" />
+      <ComponentRef Id="MyAppCopySettings" />
+      <ComponentRef Id="StartMenuShortcutComponent" />
+    </Feature>
+
+    <!-- Include Custom.DLL (not installed, but used during installation) -->
+    <Binary Id="CustomDLL" SourceFile=".\build\Release\UnRAR0.dll" />
+
+    <!-- Custom action to call OnInstall() from Custom.DLL -->
+    <CustomAction Id="CallOnInstall" DllEntry="OnInstall" Execute="immediate" BinaryRef="CustomDLL" Impersonate="yes" />
+    <CustomAction Id="CallOnUnInstall" DllEntry="OnUnInstall" Execute="immediate" BinaryRef="CustomDLL" Impersonate="yes" />
+
+    <!-- Schedule custom actions -->
+    <InstallExecuteSequence>
+      <!-- Call method1() during installation, reinstallation, or downgrade -->
+      <Custom Action="CallOnInstall" After="InstallFiles" Condition="NOT Installed OR REINSTALL" />
+      <!-- Call method2() during final uninstallation -->
+      <Custom Action="CallOnUnInstall" After="RemoveFiles" Condition="REMOVE=&quot;ALL&quot; AND NOT UPGRADINGPRODUCTCODE" />
+    </InstallExecuteSequence>
+
+    <!-- Define the directory structure -->
+      <StandardDirectory Id="LocalAppDataFolder">
+
+          <Directory Id="APPLICATIONFOLDER" Name="{{ CNAME }}">
+            <!-- Add the executable -->
+            <Component Id="MyAppExecutable" Guid="{{ MYAPPEXECUTABLE }}">
+              <File Id="MyAppExe" Name="{{ CNAME }}.exe" Source="{{ MAIN_SOURCE_FILE }}" KeyPath="no">
+                <Shortcut Id="desktopFoobar10" Directory="DesktopFolder" Name="{{ TITLE }}" WorkingDirectory="APPLICATIONFOLDER" Icon="AppIcon1" IconIndex="0" Advertise="no" />
+              </File>
+            <% for file in OTHER_SOURCE_FILES %>
+              <File Id="{{ basename(file) }}" Name="{{ basename(file) }}" Source="{{ file }}" KeyPath="no" />
+            <% endfor %>
+              <RemoveFile Id="DatFile" On="uninstall" Name="{{ SETTINGS }}" />
+            </Component>
+            <Component Id="MyAppRegistry" Guid="{{ MYAPPREGISTRY }}">
+              <RegistryValue Root="HKCU" Key="Software\{{ CNAME }}" Name="InstallPath" Type="string" Value="[APPLICATIONFOLDER]" KeyPath="yes" />
+              <RemoveRegistryKey Root="HKCU" Key="Software\{{ CNAME }}" Action="removeOnUninstall" />
+            </Component>
+            <Component Id="MyAppCopySettings" Guid="{{ MYAPPCOPYSETTINGS }}">
+              <CopyFile Id="CopySettingsFile" DestinationProperty="APPLICATIONFOLDER" SourceName="{{ SETTINGS }}" SourceProperty="PREVAPPLICATIONFOLDER" />
+            </Component>
+          </Directory>
+
+      </StandardDirectory>
+
+      <StandardDirectory Id="DesktopFolder" />
+
+      <!-- Per-user Start Menu Folder (e.g., C:\Users\<Username>\AppData\Roaming\Microsoft\Windows\Start Menu\Programs) -->
+      <StandardDirectory Id="ProgramMenuFolder">
+        <Directory Id="ProgramMenuSubfolder" Name="{{ TITLE }}">
+          <!-- Component for the Start Menu shortcut -->
+          <Component Id="StartMenuShortcutComponent" Guid="{{ STARTMENUSHORTCUTCOMPONENT }}">
+            <!-- Shortcut to the application executable -->
+            <Shortcut Id="StartMenuShortcut" Name="{{ TITLE }}" Target="[APPLICATIONFOLDER]{{ CNAME }}.exe" WorkingDirectory="APPLICATIONFOLDER" />
+          </Component>
+        </Directory>
+      </StandardDirectory>
+
+    </Package>
+</Wix>

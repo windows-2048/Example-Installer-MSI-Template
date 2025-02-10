@@ -1,0 +1,24 @@
+CNAME: TheFastestMouseClicker
+CNM: TFMCfW
+TITLE: The Fastest Mouse Clicker for Windows
+DESCRIPTION: The fastest auto-clicker for Windows PC using arrayed Win32 SendInput()
+
+MANUFACTURER: The Fastest Mouse Clicker for Windows
+LICENSE: .\_license.rtf
+VERMSI: 2.6.2
+UPGRADECODE: 10E7FD14-FECD-4E64-9B19-F8F07D755A30
+MYAPPEXECUTABLE: 10E7FD14-FECD-4E64-9B19-F8F07D755A31
+MYAPPREGISTRY: 10E7FD14-FECD-4E64-9B19-F8F07D755A32
+MYAPPCOPYSETTINGS: 10E7FD14-FECD-4E64-9B19-F8F07D755A33
+STARTMENUSHORTCUTCOMPONENT: 10E7FD14-FECD-4E64-9B19-F8F07D755A35
+SETTINGS: settings.dat
+HELPLINK: https://help.com
+IMG_TOP: .\img_top.bmp
+IMG_DIALOG: .\img_dialog.bmp
+MAIN_SOURCE_FILE: .\v2.6.2.0\fix\TheFastestMouseClicker.exe
+OTHER_SOURCE_FILES:
+  - .\v2.6.2.0\fix\TheFastestMouseGroupClicker.exe
+  - .\v2.6.2.0\fix\tfmcfw_disp.dll
+  - .\v2.6.2.0\fix\tfmcfw_g_disp.dll
+  - .\v2.6.2.0\fix\tfmcfw.dll
+  - .\v2.6.2.0\fix\tfmcfw_g.dll
