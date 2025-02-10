@@ -2,6 +2,8 @@
 
 This is a minimalist MSI installer generator for your pet projects for Windows (preferably written in C/C++ but not necessarily).
 
+![Example Installer MSI Template: screenshot-license.png](screenshot-license.png)
+
 ## Our goals
 
 1. MSI installer is a modern, standard and recommended way to install your applications on Windows, it deserves more trust of end-users
