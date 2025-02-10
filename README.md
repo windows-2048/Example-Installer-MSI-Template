@@ -1,8 +1,8 @@
-# Example-Installer-MSI-Template
+# Example Installer MSI Template
 
 This is a minimalist MSI installer generator for your pet projects for Windows (preferably written in C/C++ but not necessarily).
 
-## Goals
+## Our goals
 
 1. MSI installer is a modern, standard and recommended way to install your applications on Windows, it deserves more trust of end-users
 and achieves less false-positive detection of antivirus software than any executable-based installer like [InnoSetup](https://jrsoftware.org/isinfo.php).
@@ -17,9 +17,9 @@ via the Visual Studio plugin and the GUI.
 3. Meanwhile, most pet projects are sufficiently simple (and not only pet ones) in means of installation process. And even if that is not the case, we want to preserve
 generality, allowing to create an installer of an arbitrary complexity via calling predefined functions form a custom DLL.
 
-## Requirements
+## Requirements to your pet project
 
-1. Your pet project has a **single** main executable to install and arbitrary set of DLLs shipped with the executable. If your project has several
+1. Your project has a **single** main executable to install and arbitrary set of DLLs shipped with the executable. If your project has several
 executables, consider to implement a feature to run them from each other.
 
 2. Your project can be upgraded and downgraded easily without controlling a version info by the installer. Simple file copying is used always.
@@ -35,7 +35,7 @@ OnUnInstall() will **not** be called during upgrade/downgrade.
 
 5. Your application does not require to escalate privileges.
 
-## Features
+## Features of the generated MSI installer
 
 1. MSI installer creates a standard record about your installed product in a special Windows database with **TITLE** from [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml).
 
@@ -60,3 +60,22 @@ In this case, default installation folder will be the detected location.
 8. Installer creates a "Desktop" shortcut and a "Start Menu Programs" folder and shortcut from the icon embedded in the main executable, **MAIN_SOURCE_FILE**.
 
 9. See [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) for further example. **Do not forget to set your unique GIUDs**.
+
+## Prerequisites to generate the MSI installer on your PC
+
+1. Python version 3.x, we use Python v3.11 as most advanced yet stable one. See example %PATH% from [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
+
+2. CMake version 3.15.x, we use 3.27.7. See example %PATH% from [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
+
+3. MS Visual Studio 2019 professional or enterprise as we build the custom DLL with /MT code generation flag (Static MultiThreaded Config).
+See example %PATH% from [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
+
+4. Optionally, WinRAR (currently not used in the example).
+
+## Usage
+
+After standard git clone, from within [TFMCfW_Example_MSI/](TFMCfW_Example_MSI/) folder:
+
+1. Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
+
+2. Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
