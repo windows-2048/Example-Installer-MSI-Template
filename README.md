@@ -31,7 +31,7 @@ We recommend to use [SQLite](https://www.sqlite.org/) since it is a mature ACID-
 full-featured, SQL database engine. SQLite is the most used database engine in the world.
 
 4. Your project is shipped with a custom DLL that has two exported functions: OnInstall() and OnUnInstall(). OnInstall() will be called during installation process
-(first-install/upgrade/downgrade) after all project files are copied from the embedding installer file to the installation folder on disk.
+(first-install/upgrade/downgrade/repair) after all project files are copied from the embedding installer cabinet file to the installation folder on disk.
 OnUnInstall() will be called during uninstall before all project files are removed from disk, only if no installed product should remain on disk.
 OnUnInstall() will **not** be called during upgrade/downgrade.
 
