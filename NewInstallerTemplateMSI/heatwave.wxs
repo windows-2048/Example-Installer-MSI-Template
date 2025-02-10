@@ -34,7 +34,7 @@
     <!-- Define WIXUI_INSTALLDIR based on PREVAPPLICATIONFOLDER or APPLICATIONFOLDER -->
     <Property Id="WIXUI_INSTALLDIR" Value="APPLICATIONFOLDER" />
 
-    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch My Application Name" />
+    <Property Id="WIXUI_EXITDIALOGOPTIONALCHECKBOXTEXT" Value="Launch {{ TITLE }}" />
 
     <Property Id="WixShellExecTarget" Value="[#MyAppExe]" />
     <CustomAction Id="LaunchApplication" DllEntry="WixShellExec" Impersonate="yes" BinaryRef="Wix4UtilCA_X86" />
