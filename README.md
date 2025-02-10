@@ -53,9 +53,9 @@ In this case, default installation folder will be the detected location.
 
 7. Your license to agree should be in \*.rtf format with recommended font size 6pt, its disk path is set by **LICENSE**.
 
-6. Your top background image should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_TOP**. We recommend a single-color, pale saturated image.
+6. Your top background image to be shown the installer should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_TOP**. We recommend a single-color, pale saturated image.
 
-7. Your dialog background image should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_DIALOG**. We recommend a single-color, pale saturated image.
+7. Your dialog background image to be shown the installer should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_DIALOG**. We recommend a single-color, pale saturated image.
 
 8. Installer creates a "Desktop" shortcut and a "Start Menu Programs" folder and shortcut from the icon embedded in the main executable, **MAIN_SOURCE_FILE**.
 
