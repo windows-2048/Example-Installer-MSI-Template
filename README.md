@@ -77,7 +77,7 @@ In this case, default installation folder will be the detected location.
 
 9. See [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) for further example. **Do not forget to set your unique GIUDs**.
 
-## Prerequisites to generate the MSI installer on your PC
+## Prerequisites to magically generate the MSI installer on your PC
 
 1. Python version 3.x, we use Python v3.11 as most advanced yet stable one. See example %PATH% from [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
 
@@ -86,7 +86,9 @@ In this case, default installation folder will be the detected location.
 3. MS Visual Studio 2019 professional or enterprise as we build the custom DLL with /MT code generation flag (Static MultiThreaded Config).
 See example %PATH% from [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
 
-4. Optionally, WinRAR (currently not used in the example).
+4. WiX Toolset (version 5). Could be downloaded right from GitHib as an MSI installer to use from [CLI](https://github.com/wixtoolset/wix/releases/download/v5.0.2/wix-cli-x64.msi).
+
+5. Optionally, WinRAR (currently not used in the example).
 
 ## Usage
 
