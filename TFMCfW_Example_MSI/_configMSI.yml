@@ -22,3 +22,7 @@ OTHER_SOURCE_FILES:
   - .\v2.6.2.0\fix\tfmcfw_g_disp.dll
   - .\v2.6.2.0\fix\tfmcfw.dll
   - .\v2.6.2.0\fix\tfmcfw_g.dll
+
+MSVC: Visual Studio 16 2019
+MSVC_ROOT: C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise
+MSVC_CL_SUBDIR: VC\Tools\MSVC\14.29.30133\bin\HostX64\x64

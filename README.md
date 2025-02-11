@@ -46,7 +46,7 @@ OnUnInstall() will **not** be called during upgrade/downgrade.
 
 ## Features of the generated MSI installer
 
-1. MSI installer creates a standard record about your installed product in a special Windows database with **TITLE** from [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml).
+1. MSI installer creates a standard record about your installed product in a special Windows database with **TITLE** value from [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml).
 
 2. Product version is in 3-digit format, it is set by **VERMSI**. It is shown with **HELPLINK** in the Windows' Control Panel\\Programs\\Programs and Features
 and Settings->Apps and features.
