@@ -1,4 +1,4 @@
-# Magic Installer MSI Template
+# Magic MSI Installer Template
 
 **This is a minimalist MSI installer 2-click generator for your pet projects for Windows (not necessarily pet ones, preferably written in C/C++ but not necessarily again).**
 
