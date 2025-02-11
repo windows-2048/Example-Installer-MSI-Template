@@ -6,6 +6,7 @@ Magic works as all you need is to populate [_configMSI.yml](TFMCfW_Example_MSI/_
 * Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
 * Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
 
+And voila! Magic is coming!
 
 Screenshots... | Screenshots...
 ----- | -----
