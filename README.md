@@ -1,8 +1,15 @@
-# Example Installer MSI Template
+# Magic Installer MSI Template
 
-This is a minimalist MSI installer generator for your pet projects for Windows (preferably written in C/C++ but not necessarily).
+**This is a minimalist MSI installer 2-click generator for your pet projects for Windows (not necessarily pet ones, preferably written in C/C++ but not necessarily again).**
 
-![Example Installer MSI Template: screenshot-license.png](screenshot-license.png)
+Magic works as all you need is to populate [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) with your own values, then:
+
+1. Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
+
+2. Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
+
+
+![Magic Installer MSI Template: screenshot-license.png](screenshot-license.png)
 
 ## Our goals
 
@@ -78,6 +85,6 @@ See example %PATH% from [__build_msi_installer.bat](NewInstallerTemplateMSI/__bu
 
 After standard git clone, from within [TFMCfW_Example_MSI/](TFMCfW_Example_MSI/) folder:
 
-1. Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
+1. Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat) to generate a build configuration.
 
-2. Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
+2. Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat) to build it.
