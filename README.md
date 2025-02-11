@@ -7,7 +7,15 @@ Magic works as all you need is to populate [_configMSI.yml](TFMCfW_Example_MSI/_
 * Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
 
 
-![Magic Installer MSI Template: screenshot-license.png](screenshot-license.png)
+Screenshots... | Screenshots...
+----- | -----
+![Magic Installer MSI Template: screenshot-welcome.png](screenshot-welcome.png) | ![Magic Installer MSI Template: screenshot-license.png](screenshot-license.png)
+![Magic Installer MSI Template: screenshot-folder.png](screenshot-folder.png) | ![Magic Installer MSI Template: screenshot-install.png](screenshot-install.png)
+![Magic Installer MSI Template: screenshot-customdll-oninstall.png](screenshot-customdll-oninstall.png) | ![Magic Installer MSI Template: screenshot-launch.png](screenshot-launch.png)
+![Magic Installer MSI Template: screenshot-app.png](screenshot-app.png) | ![Magic Installer MSI Template: screenshot-desktop-program-menu-icons.png](screenshot-desktop-program-menu-icons.png)
+![Magic Installer MSI Template: screenshot-appwiz-cpl.png](screenshot-appwiz-cpl.png) | ![Magic Installer MSI Template: screenshot-customdll-onuninstall.png](screenshot-customdll-onuninstall.png)
+![Magic Installer MSI Template: screenshot-uninstall.png](screenshot-uninstall.png) | ![Magic Installer MSI Template: screenshot-config-msi-yml.png](screenshot-config-msi-yml.png)
+
 
 ## Our goals
 
