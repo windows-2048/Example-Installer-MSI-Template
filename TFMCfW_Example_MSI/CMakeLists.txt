@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.15.0)
 project(NewInstallerTemplateMSI)
 
 # Enable Unicode Character Set
-add_compile_definitions(UNICODE _UNICODE MYMAGIC=157593)
+add_compile_definitions(UNICODE _UNICODE)
 
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
