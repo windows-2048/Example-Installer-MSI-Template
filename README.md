@@ -80,13 +80,15 @@ In this case, default installation folder will be the detected location.
 ## Prerequisites to magically generate the MSI installer on your PC
 
 1. Python version 3.x, we use Python v3.11 as most advanced yet stable one. See example %PATH% from [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
+Set the **PYTHON_ROOT** value.
 
-2. CMake version 3.15.x, we use 3.27.7. See example %PATH% from [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
+2. CMake version 3.15.x, we use 3.27.7. Set the **CMAKE_ROOT** and **MSVC** values.
 
-3. MS Visual Studio 2019 professional or enterprise as we build the custom DLL with /MT code generation flag (Static MultiThreaded Config).
-See example %PATH% from [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
+3. MS Visual Studio 2019/2022 professional or enterprise as we build the custom DLL with /MT code generation flag (Static MultiThreaded Config).
+Set the **MSVC_ROOT** and **MSVC_CL_SUBDIR** values.
 
 4. WiX Toolset (version 5). Could be downloaded right from GitHib as an MSI installer to use from [CLI](https://github.com/wixtoolset/wix/releases/download/v5.0.2/wix-cli-x64.msi).
+Set the **WIX_TOOLSET_EXE** value.
 
 5. Optionally, WinRAR (currently not used in the example).
 

@@ -7,7 +7,7 @@ echo CD=%CD%
 
 
 set PATHMSVC2019={{ MSVC_ROOT }}\{{ MSVC_CL_SUBDIR }};{{ MSVC_ROOT }}\MSBuild\Current\bin\Roslyn;{{ MSVC_ROOT }}\Common7\Tools\devinit;{{ MSVC_ROOT }}\\MSBuild\Current\Bin;{{ MSVC_ROOT }}\Common7\Tools
-set PATHMSVCEXTR=C:\Users\test\AppData\Local\Programs\Python\Python311;C:\Program Files\CMake\bin
+set PATHMSVCEXTR={{ PYTHON_ROOT }};{{ CMAKE_ROOT }}
 
 set PATH=.;%PATHMSVC2019%;%PATHMSVCEXTR%;C:\Program Files\WinRAR;C:\OpenSSL-Win32\bin;%systemroot%\System32;%systemroot%;%systemroot%\System32\Wbem
 echo PATH=%PATH%
