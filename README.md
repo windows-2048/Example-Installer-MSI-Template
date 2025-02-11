@@ -99,3 +99,7 @@ After standard git clone, from within [TFMCfW_Example_MSI/](TFMCfW_Example_MSI/)
 1. Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat) to generate a build configuration.
 
 2. Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat) to build it.
+
+## Behind the stage
+
+This is a proposed future installer for [The-Fastest-Mouse-Clicker-for-Windows](https://windows-2048.github.io/The-Fastest-Mouse-Clicker-for-Windows/).
