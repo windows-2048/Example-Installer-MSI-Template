@@ -5,7 +5,8 @@
 Magic works on [MS Visual Studio](https://visualstudio.microsoft.com/) as all you need is to populate [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) with your own values,
 set **BUILD_SUBDIR** to .\build\Release, then:
 * Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
-* Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat) - it uses a MS Visual C compiler selected by [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml).
+* Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat) - it uses a MS Visual C compiler selected by [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml)
+values **MSVC\***.
 
 Magic works now on [MSYS2/MINGW64](https://www.msys2.org/) as well: set **BUILD_SUBDIR** to .\build2\Release, then:
 * Run [./___generate_msi_template.sh](TFMCfW_Example_MSI/___generate_msi_template.sh).
