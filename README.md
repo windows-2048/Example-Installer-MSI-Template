@@ -69,15 +69,15 @@ In this case, default installation folder will be the detected location.
 
 7. Your license to agree should be in \*.rtf format with recommended font size 6pt, its disk path is set by **LICENSE**.
 
-6. Your top background image to be shown the installer should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_TOP**. We recommend a single-color, pale saturated image.
+8. Your top background image to be shown the installer should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_TOP**. We recommend a single-color, pale saturated image.
 
-7. Your dialog background image to be shown the installer should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_DIALOG**. We recommend a single-color, pale saturated image.
+9. Your dialog background image to be shown the installer should be in 24-bit RGB, no color space, \*.bmp format, its disk path is set by **IMG_DIALOG**. We recommend a single-color, pale saturated image.
 
-8. Installer creates a "Desktop" shortcut and a "Start Menu Programs" folder and shortcut from the icon embedded in the main executable, **MAIN_SOURCE_FILE**.
+10. Installer creates a "Desktop" shortcut and a "Start Menu Programs" folder and shortcut from the icon embedded in the main executable, **MAIN_SOURCE_FILE**.
 
-9. See [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) for further example. **Do not forget to set your unique GIUDs**.
+11. See [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) for further example. **Do not forget to set your unique GIUDs**.
 
-10. For your convenience, CMake generates a MS Visual Studio project named test_**CUSTOM_DLL_NAME** and console target executable test_**CUSTOM_DLL_NAME**.exe with *test_msi.c* source file to perform your unit tests on a **CUSTOM_DLL_NAME**.dll.
+12. For your convenience, CMake generates a MS Visual Studio project named test_**CUSTOM_DLL_NAME** and console target executable test_**CUSTOM_DLL_NAME**.exe with *test_msi.c* source file to perform your unit tests on a **CUSTOM_DLL_NAME**.dll.
 
 ## Prerequisites to magically generate the MSI installer on your PC
 
