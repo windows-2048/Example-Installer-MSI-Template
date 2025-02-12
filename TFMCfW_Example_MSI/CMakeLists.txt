@@ -10,17 +10,34 @@ add_compile_definitions(UNICODE _UNICODE)
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
+# Set static runtime before any targets are defined
+if(MSVC)
 # Force only Release and Debug configurations
 set(CMAKE_CONFIGURATION_TYPES "Debug;Release" CACHE STRING "" FORCE)
-
 # Add global compiler definitions for Debug and Release configurations
 add_compile_definitions(
     $<$<CONFIG:Debug>:_DEBUG>
     $<$<CONFIG:Release>:NDEBUG>
 )
-
-# Set static runtime before any targets are defined
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
+else()
+set(CMAKE_SHARED_LIBRARY_PREFIX "")
+set(CMAKE_SHARED_LIBRARY_SUFFIX ".dll")
+# Define the Release and Debug configurations
+if(NOT CMAKE_BUILD_TYPE)
+    set(CMAKE_BUILD_TYPE "Release" CACHE STRING "Choose the type of build." FORCE)
+endif()
+# Set the NDEBUG and _DEBUG macros for Release and Debug configurations
+if(CMAKE_BUILD_TYPE STREQUAL "Release")
+    add_compile_definitions(NDEBUG)
+elseif(CMAKE_BUILD_TYPE STREQUAL "Debug")
+    add_compile_definitions(_DEBUG)
+endif()
+add_link_options(
+    "-static-libgcc"
+    "-static-libstdc++"
+)
+endif()
 
 
 
@@ -32,11 +49,16 @@ target_link_libraries(UnRAR0
     PRIVATE
     msi
 )
+if(MSVC)
 target_link_options(UnRAR0 PRIVATE
     "/SUBSYSTEM:WINDOWS"
     "/MANIFEST:NO"
 )
-
+else()
+target_link_options(UnRAR0 PRIVATE
+    "-Wl,--subsystem,windows"
+)
+endif()
 
 
 add_executable(test_UnRAR0
@@ -46,10 +68,16 @@ target_link_libraries(test_UnRAR0
     PRIVATE
     msi
 )
+if(MSVC)
 target_link_options(test_UnRAR0 PRIVATE
     "/SUBSYSTEM:CONSOLE"
     "/MANIFEST:NO"
 )
+else()
+target_link_options(test_UnRAR0 PRIVATE
+    "-Wl,--subsystem,windows"
+)
+endif()
 add_dependencies(test_UnRAR0 UnRAR0)
 
 
