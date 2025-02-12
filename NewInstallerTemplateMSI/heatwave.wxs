@@ -53,7 +53,7 @@
     </Feature>
 
     <!-- Include Custom.DLL (not installed, but used during installation) -->
-    <Binary Id="CustomDLL" SourceFile=".\build\Release\UnRAR0.dll" />
+    <Binary Id="CustomDLL" SourceFile="{{ BUILD_SUBDIR }}\{{ CUSTOM_DLL_NAME }}.dll" />
 
     <!-- Custom action to call OnInstall() from Custom.DLL -->
     <CustomAction Id="CallOnInstall" DllEntry="OnInstall" Execute="immediate" BinaryRef="CustomDLL" Impersonate="yes" />

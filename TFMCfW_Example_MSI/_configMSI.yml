@@ -30,3 +30,4 @@ WIX_TOOLSET_EXE: C:/Program Files/WiX Toolset v5.0/bin/wix.exe
 CUSTOM_DLL_NAME: UnRAR0
 PYTHON_ROOT: C:\Users\test\AppData\Local\Programs\Python\Python311
 CMAKE_ROOT: C:\Program Files\CMake\bin
+BUILD_SUBDIR: .\build\Release
