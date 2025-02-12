@@ -2,9 +2,14 @@
 
 **This is a minimalist MSI installer 2-click generator for your pet projects for Windows (not necessarily pet ones, preferably written in C/C++ but not necessarily again).**
 
-Magic works as all you need is to populate [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) with your own values, then:
+Magic works on [MS Visual Studio](https://visualstudio.microsoft.com/) as all you need is to populate [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) with your own values,
+set **BUILD_SUBDIR** to .\build\Release, then:
 * Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
-* Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat).
+* Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat) - it uses a MS Visual C compiler selected by [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml).
+
+Magic works now on [MSYS2/MINGW64](https://www.msys2.org/) as well: set **BUILD_SUBDIR** to .\build2\Release, then:
+* Run [./___generate_msi_template.sh](TFMCfW_Example_MSI/___generate_msi_template.sh).
+* Run [./__build_msi_installer.sh](NewInstallerTemplateMSI/__build_msi_installer.sh) - it uses a compiler found at MSYS2 PATH, defaults to GCC.
 
 **And voila! Magic is coming!**
 
@@ -81,8 +86,10 @@ In this case, default installation folder will be the detected location.
 
 ## Prerequisites to magically generate the MSI installer on your PC
 
+### MSVC
+
 1. Python version 3.x, we use Python v3.11 as most advanced yet stable one. See example %PATH% from [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
-Set the **PYTHON_ROOT** value.
+Set the **PYTHON_ROOT** value. Don't forget to pip install jinja2, yaml.
 
 2. CMake version 3.15.x, we use 3.27.7. Set the **CMAKE_ROOT** and **MSVC** values.
 
@@ -94,13 +101,32 @@ Set the **WIX_TOOLSET_EXE** value.
 
 5. Optionally, WinRAR (currently not used in the example).
 
+### MSYS2/MINGW64
+
+1. Installed gcc or clang, binutils, cmake, ninja, python, mingw-w64-x86_64-python-jinja, mingw-w64-x86_64-python-yaml. Note, in this case
+**PYTHON_ROOT**, **CMAKE_ROOT**, **MSVC**, **MSVC_ROOT**, **MSVC_CL_SUBDIR** values are unused.
+
+2. WiX Toolset (version 5). Could be downloaded right from GitHib as an MSI installer to use from [CLI](https://github.com/wixtoolset/wix/releases/download/v5.0.2/wix-cli-x64.msi).
+Set the **WIX_TOOLSET_EXE** value.
+
 ## Usage
 
 After standard git clone, from within [TFMCfW_Example_MSI/](TFMCfW_Example_MSI/) folder:
 
-1. Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat) to generate a build configuration.
+### MSVC
 
-2. Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat) to build it.
+set **BUILD_SUBDIR** to .\build\Release
+
+1. Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat) to generate a build configuration.
+2. Run [__build_msi_installer.bat](NewInstallerTemplateMSI/__build_msi_installer.bat) to build it it uses a MS Visual C compiler
+selected by [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml), values **MSVC**, **MSVC_ROOT**, **MSVC_CL_SUBDIR**.
+
+### MSYS2/MINGW64
+
+set **BUILD_SUBDIR** to .\build2\Release
+
+* Run [./___generate_msi_template.sh](TFMCfW_Example_MSI/___generate_msi_template.sh).
+* Run [./__build_msi_installer.sh](NewInstallerTemplateMSI/__build_msi_installer.sh) - it uses a compiler found at MSYS2 PATH, defaults to GCC.
 
 ## Behind the stage
 

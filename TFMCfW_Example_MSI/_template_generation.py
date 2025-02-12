@@ -5,7 +5,7 @@ import yaml
 from jinja2 import Template, Environment
 
 # Constants
-TEXT_FILE_WILDCARD_SET = ["*.txt", "*.c", "*.h", "*.cpp", "*.hpp", "*.rc", "*.py", "*.bat", "*.iss", "*.wxs"]  # Add or modify wildcards as needed
+TEXT_FILE_WILDCARD_SET = ["*.txt", "*.c", "*.h", "*.cpp", "*.hpp", "*.rc", "*.py", "*.bat", "*.iss", "*.wxs", "*.sh"]  # Add or modify wildcards as needed
 
 # Step 1: Parse _config.yml
 def parse_config(config_file):
