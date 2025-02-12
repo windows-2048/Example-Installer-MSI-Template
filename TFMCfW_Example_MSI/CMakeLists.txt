@@ -39,6 +39,21 @@ target_link_options(UnRAR0 PRIVATE
 
 
 
+add_executable(test_UnRAR0
+    test_msi.c
+)
+target_link_libraries(test_UnRAR0
+    PRIVATE
+    msi
+)
+target_link_options(test_UnRAR0 PRIVATE
+    "/SUBSYSTEM:CONSOLE"
+    "/MANIFEST:NO"
+)
+add_dependencies(test_UnRAR0 UnRAR0)
+
+
+
 # Set up the MSI Package project
 set(MSI_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/Installer")
 

@@ -77,6 +77,8 @@ In this case, default installation folder will be the detected location.
 
 9. See [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) for further example. **Do not forget to set your unique GIUDs**.
 
+10. For your convenience, CMake generates a MS Visual Studio project named test_**CUSTOM_DLL_NAME** and console target executable test_**CUSTOM_DLL_NAME**.exe with *test_msi.c* source file to perform your unit tests on a **CUSTOM_DLL_NAME**.dll.
+
 ## Prerequisites to magically generate the MSI installer on your PC
 
 1. Python version 3.x, we use Python v3.11 as most advanced yet stable one. See example %PATH% from [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).

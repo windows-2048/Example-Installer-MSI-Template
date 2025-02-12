@@ -39,6 +39,21 @@ target_link_options({{ CUSTOM_DLL_NAME }} PRIVATE
 
 
 
+add_executable(test_{{ CUSTOM_DLL_NAME }}
+    test_msi.c
+)
+target_link_libraries(test_{{ CUSTOM_DLL_NAME }}
+    PRIVATE
+    msi
+)
+target_link_options(test_{{ CUSTOM_DLL_NAME }} PRIVATE
+    "/SUBSYSTEM:CONSOLE"
+    "/MANIFEST:NO"
+)
+add_dependencies(test_{{ CUSTOM_DLL_NAME }} {{ CUSTOM_DLL_NAME }})
+
+
+
 # Set up the MSI Package project
 set(MSI_OUTPUT_DIR "${CMAKE_SOURCE_DIR}/Installer")
 
