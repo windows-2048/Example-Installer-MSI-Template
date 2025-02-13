@@ -1,6 +1,6 @@
 # Magic MSI Installer Template
 
-**This is a minimalist MSI installer 2-click generator for your pet projects for Windows (not necessarily pet ones, preferably written in C/C++ but not necessarily again).**
+**This is a minimalist 2-click MSI installer generator for your pet projects for Windows (not necessarily pet ones, preferably written in C/C++ but not necessarily again).**
 
 ![Magic Installer MSI Template: screenshot-double.png](screenshot-double.png)
 
