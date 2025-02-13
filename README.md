@@ -2,6 +2,8 @@
 
 **This is a minimalist MSI installer 2-click generator for your pet projects for Windows (not necessarily pet ones, preferably written in C/C++ but not necessarily again).**
 
+![Magic Installer MSI Template: screenshot-double.png](screenshot-double.png)
+
 Magic works on [MS Visual Studio](https://visualstudio.microsoft.com/) as all you need is to populate [_configMSI.yml](TFMCfW_Example_MSI/_configMSI.yml) with your own values,
 set **BUILD_SUBDIR** to .\build\Release, then:
 * Run [___generate_msi_template.bat](TFMCfW_Example_MSI/___generate_msi_template.bat).
@@ -13,6 +15,9 @@ Magic works now on [MSYS2/MINGW64](https://www.msys2.org/) as well: set **BUILD_
 * Run [./__build_msi_installer.sh](NewInstallerTemplateMSI/__build_msi_installer.sh) - it uses a compiler found at MSYS2 PATH, defaults to GCC.
 
 **And voila! Magic is coming!**
+
+C++ compiler is just needed to compile your **CUSTOM_DLL_NAME**.dll, a "hidden" part of your MSI installer (to ensure it may actually have the arbitrary capabilities
+to configure your installation and operating system). Note, **CUSTOM_DLL_NAME**.dll is not a part of your app (that can be written in any language).
 
 Screenshots... | Screenshots...
 ----- | -----
